@@ -3,26 +3,26 @@
 	"id": "cloaked",
 	"version": "${version}",
 	"name": "Cloaked Libraries",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "Mysterious libraries floating in the End... (libraries currently not included).",
 	"authors": [
-		"Me!"
+		"Endertul0"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"sources": "https://github.com/Endertul0/cloaked-libraries",
+		"issues": "https://github.com/Endertul0/cloaked-libraries/issues"
 	},
 	"license": "CC0-1.0",
-	"icon": "assets/cloaked/icon.png",
+	"icon": "assets/cloaked/textures/item/decloaker.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"io.github.endertul.cloaked.CloakedLibraries"
-		],
-		"client": [
-			"io.github.endertul.cloaked.CloakedLibrariesClient"
+			"io.github.endertul.cloaked.Cloaked"
 		],
 		"fabric-datagen": [
-			"io.github.endertul.cloaked.CloakedLibrariesDataGenerator"
+			"io.github.endertul.cloaked.CloakedDataGenerator"
+		],
+		"client": [
+			"io.github.endertul.cloaked.CloakedClient"
 		]
 	},
 	"mixins": [

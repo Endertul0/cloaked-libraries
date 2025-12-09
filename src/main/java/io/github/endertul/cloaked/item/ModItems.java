@@ -1,6 +1,6 @@
 package io.github.endertul.cloaked.item;
 
-import io.github.endertul.cloaked.CloakedLibraries;
+import io.github.endertul.cloaked.Cloaked;
 import io.github.endertul.cloaked.item.custom.QuickCloakerItem;
 import io.github.endertul.cloaked.item.custom.SlowCloakerItem;
 import io.github.endertul.cloaked.item.custom.DecloakerItem;
@@ -29,10 +29,10 @@ public class ModItems {
     }
 
     private static Item registerItem(String name, Item item) {
-        return Registry.register(Registries.ITEM, new Identifier(CloakedLibraries.MOD_ID, name), item);
+        return Registry.register(Registries.ITEM, new Identifier(Cloaked.MOD_ID, name), item);
     }
     public static void registerModItems() {
-        io.github.endertul.cloaked.CloakedLibraries.LOGGER.info("Registering mod items for " + io.github.endertul.cloaked.CloakedLibraries.MOD_ID);
+        Cloaked.LOGGER.info("Registering mod items for " + Cloaked.MOD_ID);
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register(ModItems::addItemsToFunctionalItemGroup);
     }

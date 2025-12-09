@@ -1,7 +1,7 @@
 package io.github.endertul.cloaked.block;
 
 import com.mojang.datafixers.types.Type;
-import io.github.endertul.cloaked.CloakedLibraries;
+import io.github.endertul.cloaked.Cloaked;
 import io.github.endertul.cloaked.block.custom.CloakBlockEntity;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
@@ -19,6 +19,6 @@ public class ModBlockEntities {
     }
 
     public static void registerModBlockEntities() {
-        CloakedLibraries.LOGGER.info("Registering mod block entities for " + io.github.endertul.cloaked.CloakedLibraries.MOD_ID);
+        Cloaked.LOGGER.info("Registering mod block entities for " + Cloaked.MOD_ID);
     }
 }

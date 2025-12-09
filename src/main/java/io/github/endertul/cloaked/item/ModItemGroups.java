@@ -1,6 +1,6 @@
 package io.github.endertul.cloaked.item;
 
-import io.github.endertul.cloaked.CloakedLibraries;
+import io.github.endertul.cloaked.Cloaked;
 import io.github.endertul.cloaked.block.ModBlocks;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.item.ItemGroup;
@@ -12,7 +12,7 @@ import net.minecraft.util.Identifier;
 
 public class ModItemGroups {
     public static final ItemGroup ARG_TAB = Registry.register(Registries.ITEM_GROUP,
-            new Identifier(CloakedLibraries.MOD_ID, "cloaked_tab"),
+            new Identifier(Cloaked.MOD_ID, "cloaked_tab"),
             FabricItemGroup.builder().displayName(Text.translatable("itemgroup.cloaked_tab"))
                     .icon(() -> new ItemStack(ModItems.DECLOAKER)).entries((displayContext, entries) -> {
                         entries.add(ModBlocks.CLOAK);
@@ -22,6 +22,6 @@ public class ModItemGroups {
                     }).build());
 
     public static void registerItemGroups() {
-        io.github.endertul.cloaked.CloakedLibraries.LOGGER.info("Registering item group for " + io.github.endertul.cloaked.CloakedLibraries.MOD_ID);
+        Cloaked.LOGGER.info("Registering item group for " + Cloaked.MOD_ID);
     }
 }

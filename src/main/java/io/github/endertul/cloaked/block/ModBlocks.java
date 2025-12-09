@@ -1,6 +1,6 @@
 package io.github.endertul.cloaked.block;
 
-import io.github.endertul.cloaked.CloakedLibraries;
+import io.github.endertul.cloaked.Cloaked;
 import io.github.endertul.cloaked.block.custom.CloakBlock;
 import io.github.endertul.cloaked.util.ConvertBlocks;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
@@ -17,18 +17,19 @@ import net.minecraft.util.Identifier;
 public class ModBlocks {
 
     public static final Block CLOAK = registerBlock("cloak",
-            new CloakBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).sounds(BlockSoundGroup.SCULK_SENSOR)));
+            //new CloakBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).sounds(BlockSoundGroup.SCULK_SENSOR), ConvertToTypes.AIR, ConvertToTypes.SubType.NONE));
+            new CloakBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).sounds(BlockSoundGroup.SCULK_SENSOR), ConvertBlocks.STONE));
 
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);
-        return Registry.register(Registries.BLOCK, new Identifier(CloakedLibraries.MOD_ID, name), block);
+        return Registry.register(Registries.BLOCK, new Identifier(Cloaked.MOD_ID, name), block);
     }
 
     private static Item registerBlockItem(String name, Block block) {
-        return Registry.register(Registries.ITEM, new Identifier(io.github.endertul.cloaked.CloakedLibraries.MOD_ID, name),
+        return Registry.register(Registries.ITEM, new Identifier(Cloaked.MOD_ID, name),
                 new BlockItem(block, new FabricItemSettings()));
     }
     public static void registerModBlocks() {
-        io.github.endertul.cloaked.CloakedLibraries.LOGGER.info("Registering mod blocks for " + io.github.endertul.cloaked.CloakedLibraries.MOD_ID);
+        Cloaked.LOGGER.info("Registering mod blocks for " + Cloaked.MOD_ID);
     }
 }

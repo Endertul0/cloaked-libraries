@@ -1,6 +1,6 @@
 package io.github.endertul.cloaked.util;
 
-import io.github.endertul.cloaked.CloakedLibraries;
+import io.github.endertul.cloaked.Cloaked;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.registry.RegistryKeys;
@@ -19,7 +19,7 @@ public class ModTags {
         public static final TagKey<Block> JUNGLE_KEY = createTag("jungle_key");
 
         private static TagKey<Block> createTag(String name) {
-            return TagKey.of(RegistryKeys.BLOCK, new Identifier(CloakedLibraries.MOD_ID, name));
+            return TagKey.of(RegistryKeys.BLOCK, new Identifier(Cloaked.MOD_ID, name));
         }
     }
 
@@ -27,7 +27,7 @@ public class ModTags {
 
 
         private static TagKey<Item> createTag(String name) {
-            return TagKey.of(RegistryKeys.ITEM, new Identifier(io.github.endertul.cloaked.CloakedLibraries.MOD_ID, name));
+            return TagKey.of(RegistryKeys.ITEM, new Identifier(Cloaked.MOD_ID, name));
         }
     }
 }
