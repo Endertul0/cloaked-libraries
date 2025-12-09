@@ -1,0 +1,9 @@
+// 1.20	2025-12-08T19:03:39.4886658	Cloaked Libraries/Tags for minecraft:block
+06e5aefdf5c842ffaecaa823a29751dc9257a1df data\fabric\tags\blocks\needs_tool_level_4.json
+ce3fb8eec6459c77e3cacfe3c7ee99dcbf010bdb data\cloaked\tags\blocks\spruce_key.json
+d008c22e4701ff1779b923846e9c9d0f5d785df5 data\cloaked\tags\blocks\birch_key.json
+16aca354af5afa428906f4a6c53a935ea69639f4 data\cloaked\tags\blocks\oak_key.json
+6c510a0e8f1c489d8e4757767792a3f9789e5a86 data\cloaked\tags\blocks\jungle_key.json
+14986cf8732316836ab5ce169a21d4e21b09e347 data\cloaked\tags\blocks\dark_oak_key.json
+a06534685a1ea739c2d7ab8b4f4bcbc0d467855a data\cloaked\tags\blocks\logs_key.json
+e4925dbb01d7d3896d645152684d77d674a80a1a data\cloaked\tags\blocks\planks_key.json
