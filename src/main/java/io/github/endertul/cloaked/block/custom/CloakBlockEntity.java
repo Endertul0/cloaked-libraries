@@ -22,20 +22,9 @@ public class CloakBlockEntity extends BlockEntity {
     @Override
     public void readNbt(NbtCompound nbt) {
         super.readNbt(nbt);
-        if (nbt.contains("sstate") && nbt.contains("snbt")) {
-            this.storedState = (BlockState) nbt.get("sstate");
-            this.storedBlock = this.storedState.getBlock();
-            this.storedNbt = (NbtCompound) nbt.get("snbt");
-        } else {
-            nbt.put("sstate", NbtHelper.fromBlockState(Blocks.STONE.getDefaultState()));
-            this.storedState = (BlockState) nbt.get("sstate");
-            this.storedBlock = this.storedState.getBlock();
-            if (this.storedState.hasBlockEntity()) {
-                this.storedNbt = getBlockEntity(this.getPos(), getWorld()).createNbt();
-            } else {
-                this.storedNbt = new NbtCompound();
-            }
-        }
+        this.storedState = (BlockState) nbt.get("sstate");
+        this.storedBlock = this.storedState.getBlock();
+        this.storedNbt = (NbtCompound) nbt.get("snbt");
     }
 
     public BlockEntity getBlockEntity(BlockPos pos, World world) {
@@ -51,15 +40,19 @@ public class CloakBlockEntity extends BlockEntity {
     public Block getStoredBlock() {
         return this.storedBlock;
     }
+
     public BlockState getStoredBlockState() {
         return this.storedState;
     }
+
     public void setStoredBlockState(BlockState state) {
         this.storedState = state;
     }
+
     public NbtCompound getStoredNbt() {
         return this.storedNbt;
     }
+
     public void setStoredNbt(NbtCompound nbt) {
         this.storedNbt = nbt;
     }

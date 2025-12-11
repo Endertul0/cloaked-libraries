@@ -12,22 +12,8 @@ import net.minecraft.world.BlockView;
 import org.jetbrains.annotations.Nullable;
 
 public class CloakBlock extends BlockWithEntity {
-    public CloakBlock(Settings settings, ConvertBlocks cBlock) {
+    public CloakBlock(Settings settings) {
         super(settings);
-
-        setDefaultState(stateManager.getDefaultState().with(CONVERT_BLOCK, cBlock));
-    }
-
-    public static final EnumProperty<ConvertBlocks> CONVERT_BLOCK = EnumProperty.of("cblock", ConvertBlocks.class);
-
-    @Override
-    protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(CONVERT_BLOCK).build(Block::getDefaultState, BlockState::new);
-    }
-
-    @Override
-    public ItemStack getPickStack(BlockView world, BlockPos pos, BlockState state) {
-        return ModBlocks.CLOAK.asItem().getDefaultStack();
     }
 
     @Override

@@ -2,11 +2,11 @@ package io.github.endertul.cloaked.util;
 
 import io.github.endertul.cloaked.CloakedLibraries;
 import io.github.endertul.cloaked.block.ModBlocks;
-import io.github.endertul.cloaked.block.custom.CloakBlock;
 import io.github.endertul.cloaked.block.custom.CloakBlockEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.item.ItemUsageContext;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.registry.Registries;
@@ -64,28 +64,31 @@ public class MiscUtils {
         World world = context.getWorld();
         // BlockState before conversion
         BlockState blockState = world.getBlockState(pos);
-        // ConvertBlocks value. TODO: Change the encoded block handling method into the BlockEntity. This way, Ctrl + PickBlock will return the same converted block.
-        ConvertBlocks encodedState = ConvertBlocks.byBlock(blockState.getBlock());
+
         NbtCompound blockEntityNBT;
         if (blockState.hasBlockEntity()) {
-            blockEntityNBT = world.getBlockEntity(pos).createNbtWithIdentifyingData();
+            BlockEntity blEnt = world.getBlockEntity(pos);
+            blockEntityNBT = blEnt.createNbtWithIdentifyingData();
+
+            // Remove inventory, after reading it into the NBT
+            NbtCompound blockEntityNBTCopy = blockEntityNBT.copy();
+            blockEntityNBTCopy.remove("Items");
+            blEnt.readNbt(blockEntityNBTCopy);
         } else {
             blockEntityNBT = null;
         }
 
 
-        world.setBlockState(pos, ModBlocks.CLOAK.getDefaultState()
-                .with(CloakBlock.CONVERT_BLOCK, encodedState));
+        world.setBlockState(pos, ModBlocks.CLOAK.getDefaultState());
         CloakBlockEntity cloakBlockEntity = (CloakBlockEntity) world.getBlockEntity(pos);
 
         // Set storedBlockState
+        assert cloakBlockEntity != null;
         cloakBlockEntity.setStoredBlockState(blockState);
 
         // Set storedNbt
-        if (blockState.hasBlockEntity()) {
-            if (blockEntityNBT != null) {
-                cloakBlockEntity.setStoredNbt(blockEntityNBT);
-            }
+        if (blockEntityNBT != null) {
+            cloakBlockEntity.setStoredNbt(blockEntityNBT);
         }
 
         // Handle expansion
@@ -122,7 +125,7 @@ public class MiscUtils {
         if (decodedState.hasBlockEntity()) {
             world.getBlockEntity(pos).readNbt(storedNbt);
         }
-        io.github.endertul.cloaked.CloakedLibraries.LOGGER.info("decoding as " + state.get(CloakBlock.CONVERT_BLOCK).getBlock().toString());
+
         List<BlockPos> positions = MiscUtils.getNeighbors(pos);
         for (BlockPos listPos : positions) {
             BlockState listBlockState = world.getBlockState(listPos);
