@@ -11,14 +11,16 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Util;
 
 public class ModBlockEntities {
-    public static final BlockEntityType<?> CLOAK_BLOCK_ENTITY = create("cloak_block_entity",BlockEntityType.Builder.create(CloakBlockEntity::new, ModBlocks.CLOAK));
-
-    private static <T extends BlockEntity> BlockEntityType<T> create(String id, BlockEntityType.Builder<T> builder) {
-        Type<?> type = Util.getChoiceType(TypeReferences.BLOCK_ENTITY, id);
-        return Registry.register(Registries.BLOCK_ENTITY_TYPE, id, builder.build(type));
-    }
-
-    public static void registerModBlockEntities() {
-        Cloaked.LOGGER.info("Registering mod block entities for " + Cloaked.MOD_ID);
-    }
+	private static <T extends BlockEntity> BlockEntityType<T> create(String id, BlockEntityType.Builder<T> builder) {
+		Type<?> type = Util.getChoiceType(TypeReferences.BLOCK_ENTITY, id);
+		return Registry.register(Registries.BLOCK_ENTITY_TYPE, id, builder.build(type));
+	}
+	
+	public static void registerModBlockEntities() {
+		Cloaked.LOGGER.info("Registering mod block entities for " + Cloaked.MOD_ID);
+	}
+	
+	public static final BlockEntityType<?> CLOAK_BLOCK_ENTITY = create("cloak_block_entity", BlockEntityType.Builder.create(CloakBlockEntity::new, ModBlocks.CLOAK));
+	
+	
 }

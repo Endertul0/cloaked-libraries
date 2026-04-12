@@ -9,19 +9,19 @@ import net.minecraft.data.client.ItemModelGenerator;
 import net.minecraft.data.client.Models;
 
 public class ModModelProvider extends FabricModelProvider {
-    public ModModelProvider(FabricDataOutput output) {
-        super(output);
-    }
-
-    @Override
-    public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
-        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CLOAK);
-    }
-
-    @Override
-    public void generateItemModels(ItemModelGenerator itemModelGenerator) {
-        itemModelGenerator.register(ModItems.DECLOAKER, Models.GENERATED);
-        itemModelGenerator.register(ModItems.SLOW_CLOAKER, Models.GENERATED);
-        itemModelGenerator.register(ModItems.QUICK_CLOAKER, Models.GENERATED);
-    }
+	public ModModelProvider(FabricDataOutput output) {
+		super(output);
+	}
+	
+	@Override
+	public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
+		blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CLOAK);
+	}
+	
+	@Override
+	public void generateItemModels(ItemModelGenerator itemModelGenerator) {
+		itemModelGenerator.register(ModItems.DECLOAKER, Models.GENERATED);
+		itemModelGenerator.register(ModItems.SLOW_CLOAKER, Models.GENERATED);
+		itemModelGenerator.register(ModItems.QUICK_CLOAKER, Models.GENERATED);
+	}
 }
